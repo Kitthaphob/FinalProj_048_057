@@ -19,7 +19,6 @@ function App() {
       <SideBar />
       <LogIn />
       <SignUp />
-      <LoginForm />
       </Router>
     </AuthProvider>
     

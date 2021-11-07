@@ -12,13 +12,13 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React, { useContext } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { AuthContext } from './Auth'
 import firebaseConfig from '../firebase/config';
 
 const LogIn = () => {
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
     const { email, password } = e.target.elements;
@@ -34,7 +34,7 @@ const LogIn = () => {
 
   const { currentUser } = useContext(AuthContext);
   if (currentUser) {
-    return <Redirect to="/dashboard" />;
+    return <Navigate to="/dashboard" />;
     }
 
 
@@ -53,7 +53,6 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignInSide() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -150,7 +149,6 @@ export default function SignInSide() {
       </Grid>
     </ThemeProvider>
   );
-}
 }
 
 export default LogIn;
