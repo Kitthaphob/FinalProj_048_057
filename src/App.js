@@ -3,27 +3,17 @@ import './App.css';
 import SideBar from './components/sidebar'
 import LogIn from './components/LogIn'
 import SignUp from './components/SignUp';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { AuthProvider } from './components/Auth'
 
 
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route exact path="/Login" component={LogIn} />
-          <Route exact path="/SignUp" component={SignUp} />
-          </Routes>
+    <div>
       <SideBar />
       <LogIn />
       <SignUp />
-      </Router>
-    </AuthProvider>
-    
+      </div>
   );
 }
 
 export default App;
-//aas
