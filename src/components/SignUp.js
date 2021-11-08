@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,25 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Navigate } from 'react-router-dom'
-import firebaseConfig from '../firebase/config';
 
-const SignUp = () => {
-  const [currentUser, setCurrentUser] = useState(null);
-  const handleLogin = (e) =>{
-    e.preventDefault();
-    const { email, password } = e.target.elements;
-    try {
-      firebaseConfig.auth().createUserWithEmailAndPassword(email.value, password.value);
-    } catch(error) {
-      alert(error);
-    }
-  }
-
-
-  if (currentUser) {
-    return <Navigate to="/dashboard" />
-  }
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -46,6 +28,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -147,4 +130,3 @@ const theme = createTheme();
     </ThemeProvider>
   );
 }
-export default SignUp;
