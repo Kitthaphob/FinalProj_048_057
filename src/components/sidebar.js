@@ -19,7 +19,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-
+import { BrowserRouter as Link } from 'react-router-dom';
+import { ClassNames } from '@emotion/react';
 
 const drawerWidth = 240;
 
@@ -88,6 +89,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -99,6 +101,7 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -133,27 +136,19 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'Log In', 'Sign Up', 'All Games'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {[<HomeIcon />,<LoginIcon />,<AccountCircleIcon/>,<SportsEsportsIcon/>][index]}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+          <Link to="/" className={ClassNames.link}/>
+            <ListItem button>
+              <ListItemIcon> <HomeIcon /> </ListItemIcon>
+              <ListItemText primary={"Home"} />
+              </ListItem>
+          <Link to="LogIn.js" className={ClassNames.link}/>
+          <ListItem button>
+          <ListItemIcon> <LoginIcon /> </ListItemIcon>
+          <ListItemText primary={"LogIn"} />
             </ListItem>
-          ))}
         </List>
         
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <HomeIcon /> : <SportsEsportsIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
